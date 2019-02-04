@@ -302,6 +302,10 @@
                                         <option value="disable">{$btr->general_do_disable|escape}</option>
                                         <option value="set_featured">{$btr->products_mark_bestseller|escape}</option>
                                         <option value="unset_featured">{$btr->products_unmark_bestseller|escape}</option>
+
+                                        <option value="set_output_as_radio">{$btr->set_output_as_radio|escape}</option>
+                                        <option value="unset_output_as_radio">{$btr->unset_output_as_radio|escape}</option>
+
                                         <option value="set_feed">{$btr->general_add_xml_short|escape}</option>
                                         <option value="unset_feed">{$btr->general_from_xml_short|escape}</option>
                                         <option value="duplicate">{$btr->products_create_dublicate|escape}</option>

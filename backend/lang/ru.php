@@ -951,3 +951,5 @@ $backend_translations->admintooltip_edit_translarion = 'Редактироват
 $backend_translations->admintooltip_edit_language = 'Редактировать языки';
 
 $backend_translations->output_as_radio = 'Как радиобаттон';
+$backend_translations->set_output_as_radio = 'Установить как радио';
+$backend_translations->unset_output_as_radio = 'Убрать как радио';

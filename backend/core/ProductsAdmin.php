@@ -125,6 +125,18 @@ class ProductsAdmin extends Okay {
                         $this->products->update_product($ids, array('featured'=>0));
                         break;
                     }
+
+                    case 'set_output_as_radio': {
+                        /*Включить "установить как радио"*/
+                        $this->products->update_product($ids, array('output_as_radio' => 1 ));
+                        break;
+                    }
+                    case 'unset_output_as_radio': {
+                        /*Выключить "установить как радио"*/
+                        $this->products->update_product($ids, array('output_as_radio' => 0 ));
+                        break;
+                    }
+
                     case 'set_feed': {
                         /*Выгружать в фид*/
                         $this->db->query("UPDATE __variants set feed=1 where product_id in(?@)", $ids);
