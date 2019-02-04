@@ -74,6 +74,10 @@ class Database extends Okay {
     
         $args = func_get_args();
         $q = call_user_func_array(array($this, 'placehold'), $args);
+
+        $q = preg_replace("/id=(''|\"\")/", "id=null", $q);
+        $q = preg_replace("/weight=(''|\"\")/", "weight=0.00", $q);
+
         $this->res = $this->mysqli->query($q);
 
         if ($this->config->sql_debug && $this->res == false) {
