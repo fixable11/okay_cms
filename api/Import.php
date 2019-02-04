@@ -25,7 +25,8 @@ class Import extends Okay {
         'annotation'=>       array('annotation', 'аннотация', 'краткое описание'),
         'description'=>      array('description', 'описание'),
         'images'=>           array('images', 'изображения'),
-        'url'=>              array('url', 'адрес')
+        'url'=>              array('url', 'адрес'),
+        'output_as_radio'=>  array('output_as_radio', 'Output as radio'),
 
     );
 

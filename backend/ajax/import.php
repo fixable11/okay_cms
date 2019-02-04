@@ -135,6 +135,10 @@ class ImportAjax extends Import {
         if (!empty($item['url'])) {
             $product['url'] = trim($item['url']);
         }
+
+        if (!empty($item['output_as_radio'])) {
+            $product['output_as_radio'] = intval($item['output_as_radio']);
+        }
         
         // Если задан бренд
         if (!empty($item['brand'])) {

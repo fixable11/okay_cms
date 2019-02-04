@@ -24,7 +24,8 @@ class ImportAjax extends Okay {
         'meta_description'=> array('meta description', 'описание страницы'),
         'annotation'=>       array('annotation', 'аннотация', 'краткое описание'),
         'description'=>      array('description', 'описание'),
-        'images'=>           array('images', 'изображения')
+        'images'=>           array('images', 'изображения'),
+        'output_as_radio'=> array('output_as_radio', 'Как радиобаттон'),
         
     );
     
@@ -177,6 +178,10 @@ class ImportAjax extends Okay {
         
         if(isset($item['featured'])) {
             $product['featured'] = intval($item['featured']);
+        }
+
+        if(isset($item['output_as_radio'])) {
+            $product['output_as_radio'] = intval($item['output_as_radio']);
         }
         
         if(!empty($item['url'])) {
