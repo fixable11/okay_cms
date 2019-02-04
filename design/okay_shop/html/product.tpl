@@ -114,8 +114,11 @@
                                                 data-cprice="{$v->compare_price|convert}"{/if}{if $v->sku} 
                                                 data-sku="{$v->sku|escape}"{/if} {if $v->units}
                                                 data-units="{$v->units}"{/if}
+                                                {if ($v->id == $product->variant->id)} checked {/if}
                                                 >
-                                                {if $v->name}{$v->name|escape}{else}{$product->name|escape}{/if}
+                                                    {if count($product->variants) > 1}
+                                                        {if $v->name}{$v->name|escape}{else}{$product->name|escape}{/if}
+                                                    {/if}
                                             </label> 
 
                                         {/foreach}

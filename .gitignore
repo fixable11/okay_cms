@@ -5,3 +5,5 @@ compiled/okay_shop/
 *.log
 
 config/config.php
+
+vendor/

@@ -42,12 +42,50 @@
 
             {* Submit cart button *}
             <button class="button buy fn_is_stock{if $product->variant->stock < 1} hidden{/if}" type="submit"><span data-language="add_to_cart">{$lang->add_to_cart}</span></button>
-            {* Product variants *}
-            <select name="variant" class="fn_variant variant_select {if $product->variants|count == 1}hidden{/if}">
-                {foreach $product->variants as $v}
-                    <option value="{$v->id}" data-price="{$v->price|convert}" data-stock="{$v->stock}"{if $v->compare_price > 0} data-cprice="{$v->compare_price|convert}"{/if}{if $v->sku} data-sku="{$v->sku|escape}"{/if}>{if $v->name}{$v->name|escape}{else}{$product->name|escape}{/if}</option>
-                {/foreach}
-            </select>
+            
+            {* Product variants *}  
+            {if ($product->output_as_radio)}
+
+                <div style="margin-top: 20px">     
+                    {foreach $product->variants as $v}
+
+                        <label>
+                            <input type="radio"
+                            class="fn_variant variant_radio {if $product->variants|count < 2} hidden{/if}"
+                            name="variant" 
+                            value="{$v->id}"
+                            data-price="{$v->price|convert}" 
+                            data-stock="{$v->stock}"{if $v->compare_price > 0} 
+                            data-cprice="{$v->compare_price|convert}"{/if}{if $v->sku} 
+                            data-sku="{$v->sku|escape}"{/if} {if $v->units}
+                            data-units="{$v->units}"{/if}
+                            {if ($v->id == $product->variant->id)} checked {/if}
+                            >
+                                {if count($product->variants) > 1}
+                                    {if $v->name}{$v->name|escape}{else}{$product->name|escape}{/if}
+                                {/if}
+                        </label> 
+
+                    {/foreach}
+                </div>
+
+            {else}
+                <select name="variant" class="fn_variant variant_select {if $product->variants|count == 1}hidden{/if}">
+
+                    {foreach $product->variants as $v}
+                        <option value="{$v->id}" 
+                        data-price="{$v->price|convert}" 
+                        data-stock="{$v->stock}"
+                        {if $v->compare_price > 0} data-cprice="{$v->compare_price|convert}"{/if}
+                        {if $v->sku} data-sku="{$v->sku|escape}"{/if}
+                        >
+                            {if $v->name}{$v->name|escape}{else}{$product->name|escape}{/if}
+                        </option>
+                    {/foreach}
+
+                </select>
+            {/if}
+
         </form>
     </div>
 </div>
