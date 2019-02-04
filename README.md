@@ -3,7 +3,7 @@
 1. Clone this repository
 
 ```bash
-git clone https://github.com/fixable11/laravel_spa.git
+git clone https://github.com/fixable11/okay_cms.git
 ```
 
 2. Either use migration on exisiting database
