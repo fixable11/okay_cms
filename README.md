@@ -13,3 +13,8 @@ php migrations/migrate
  or just upload `migrations/dump.sql`
 
 3. Rename `config/config.php.example` with `config/config.php` and fill in the required parameters
+
+4. Backend authority
+```bash
+Login: admin; Password: 123123
+```
