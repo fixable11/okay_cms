@@ -21,6 +21,8 @@ class ProductAdmin extends Okay {
             $product->visible = $this->request->post('visible', 'boolean');
             $product->featured = $this->request->post('featured');
             $product->brand_id = $this->request->post('brand_id', 'integer');
+
+            $product->output_as_radio = $this->request->post('output_as_radio');
             
             $product->url = trim($this->request->post('url', 'string'));
             $product->meta_title = $this->request->post('meta_title');

@@ -949,3 +949,5 @@ $backend_translations->admintooltip_edit_feature = 'Редактировать �
 $backend_translations->admintooltip_add_feature = 'Добавить свойство';
 $backend_translations->admintooltip_edit_translarion = 'Редактировать перевод';
 $backend_translations->admintooltip_edit_language = 'Редактировать языки';
+
+$backend_translations->output_as_radio = 'Как радиобаттон';

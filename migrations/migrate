@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+
+<?php
+
+chdir('..');
+
+$dbPath = 'api/Database.php';
+
+require_once($dbPath);
+
+$db = new Database();
+
+$sql = "ALTER TABLE ok_products ADD COLUMN output_as_radio tinyint(1) DEFAULT 0;";
+
+$db->query($sql);
