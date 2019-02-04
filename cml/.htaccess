@@ -1,0 +1,5 @@
+AddType application/octet-stream csv
+AuthName "OkayCMS 1C"
+AuthType Basic
+AuthUserFile /var/www/larablog/cml/.passwd
+require valid-user
