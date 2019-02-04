@@ -100,6 +100,72 @@ $(document).on('change', '.fn_variant', function() {
     }
 });
 
+/* Смена варианта в превью товара и в карточке */
+$(document).on('change', '.variant_radio', function() {
+
+
+    var selected = $( this ),
+        parent = selected.closest( '.fn_product' ),
+        price = parent.find( '.fn_price' ),
+        cprice = parent.find( '.fn_old_price' ),
+        sku = parent.find( '.fn_sku' ),
+        stock = parseInt( selected.data( 'stock' ) ),
+        amount = parent.find( 'input[name="amount"]' ),
+        camoun = parseInt( amount.val()),
+        units = selected.data('units');
+    price.html( selected.data( 'price' ) );
+    amount.data('max', stock);
+    /* Количество товаров */
+    if ( stock < camoun ) {
+        amount.val( stock );
+    } else if ( okay.amount > camoun ) {
+        amount.val( okay.amount );
+    }
+    else if(isNaN(camoun)){
+        amount.val( okay.amount );
+    }
+    /* Цены */
+    if( selected.data( 'cprice' ) ) {
+        cprice.html( selected.data( 'cprice' ) );
+        cprice.parent().removeClass( 'hidden' );
+    } else {
+        cprice.parent().addClass( 'hidden' );
+    }
+    /* Артикул */
+    if( typeof(selected.data( 'sku' )) != 'undefined' ) {
+        sku.text( selected.data( 'sku' ) );
+        sku.parent().removeClass( 'hidden' );
+    } else {
+        sku.text( '' );
+        sku.parent().addClass( 'hidden' );
+    }
+    /* Наличие на складе */
+    if (stock == 0) {
+        parent.find('.fn_not_stock').removeClass('hidden');
+        parent.find('.fn_in_stock').addClass('hidden');
+    } else {
+        parent.find('.fn_in_stock').removeClass('hidden');
+        parent.find('.fn_not_stock').addClass('hidden');
+    }
+    /* Предзаказ */
+    if (stock == 0 && okay.is_preorder) {
+        parent.find('.fn_is_preorder').removeClass('hidden');
+        parent.find('.fn_is_stock, .fn_not_preorder').addClass('hidden');
+    } else if (stock == 0 && !okay.is_preorder) {
+        parent.find('.fn_not_preorder').removeClass('hidden');
+        parent.find('.fn_is_stock, .fn_is_preorder').addClass('hidden');
+    } else {
+        parent.find('.fn_is_stock').removeClass('hidden');
+        parent.find('.fn_is_preorder, .fn_not_preorder').addClass('hidden');
+    }
+
+    if( typeof(units) != 'undefined' ) {
+        parent.find('.fn_units').text(', ' + units);
+    } else {
+        parent.find('.fn_units').text('');
+    }
+});
+
 /* Количество товара в карточке и корзине */
 $( document ).on( 'click', '.fn_product_amount span', function() {
     var input = $( this ).parent().find( 'input' ),
